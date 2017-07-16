@@ -1,0 +1,38 @@
+<%= form_for @project do |f| %>
+<!--
+こうやってブロック化することで、複数のフォームを作成できる！
+まあ、今回は1個だけしか作らないけどね
+-->
+
+<p>
+  <%= f.label :title, "プロジェクトのタイトル名；" %><br>
+  <%= f.text_field :title %>
+  <% if @project.errors.any? %>
+  <%= @project.errors.messages[:title][0] %>
+  <!-- メッセージ内容変えたい場合：/task_app/app/models/project.rb -->
+  <% end %>
+</p>
+<!-- つまり、このtext_fieldで入力された内容が、@project.titleにあてられる。 -->
+
+<p>
+  <%= f.submit "プロジェクトを新規作成" %>
+</p>
+
+<% end %>
+
+
+<!-- 脚注１
+<%#= @project.errors.inspect %>で、
+空白のまま『新規作成」ボタン押したら
+#<ActiveModel::Errors:0x007ff380091318 @base=#<Project id: nil, title: "", created_at: nil, updated_at: nil>,
+@messages={:title=>["can't be blank"]}, @details={:title=>[{:error=>:blank}]}>
+-->
+
+<!-- 脚注２
+<%#= @project.errors.messages[:title][0] %>
+↓
+...@messages={:title=>["can't be blank"]}
+              ↑キー   ↑配列0番目
+↓
+だから.messages[:title][0]なんだ！
+-->
