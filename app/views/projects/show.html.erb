@@ -1,2 +1,30 @@
 <!-- ユーザーが任意で作成したプロジェクト名（@project.title）がそのまま表示される -->
 <h1><%= @project.title %></h1>
+
+<ul>
+  <% @project.tasks.each do |task| %>
+    <li>
+      <%= check_box_tag '', '', task.done, {'data-id' => task.id, 'data-project_id' => task.project_id } %>
+      <%= task.title %>
+      <%= link_to "[削除する]", project_task_path(task.project.id, task.id), 
+                                  method: :delete, data: { confirm: "本当に削除しますか？" } %>
+    </li>
+  <% end %>
+  <li>
+    <%= form_for [@project, @project.tasks.build] do |f| %>
+      <%= f.text_field :title %>
+      <%= f.submit %>
+      <%# if @project.errors.any? %>
+        <%#= @project.errors.messages[:title][0] %>
+        <%# end %>
+    <% end %>
+  </li>
+</ul>
+
+<script>
+  $(function() {
+    $("input[type=checkbox]").click(function() {
+      $.post('/projects/'+$(this).data('project_id')+'/tasks/'+$(this).data('id')+'/toggle');
+    });
+  });
+</script>

@@ -4,6 +4,7 @@
   <% @projects.each do |project| %>
   <li>
     <%= link_to "プロジェクト「#{project.title}」", project_path(project.id) %>
+     (<%= project.tasks.unfinished.count %>/<%= project.tasks.count %>)
     <%= link_to "[編集する]", edit_project_path(project.id) %>
     <%= link_to "[削除する]", project_path(project.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
     </li>
