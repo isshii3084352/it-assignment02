@@ -8,11 +8,18 @@
       <%= task.title %>
       <%= link_to "[削除する]", project_task_path(task.project.id, task.id), 
                                   method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      <% if task.image? %>
+　　    <%= image_tag task.image.thumb.url %>
+　    <% else %>
+　　    <%= image_tag 'noimage.gif' %>
+　    <% end %>
     </li>
   <% end %>
   <li>
     <%= form_for [@project, @project.tasks.build] do |f| %>
       <%= f.text_field :title %>
+      <%= f.label :image %>
+  　　<%= f.file_field :image %>
       <%= f.submit %>
       <%# if @project.errors.any? %>
         <%#= @project.errors.messages[:title][0] %>
