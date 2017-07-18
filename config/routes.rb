@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
+  root 'projects#index'
+
   resources :projects do
     resources :tasks, only: [:create, :destroy]
   end
-
-#projectsのindexアクションをrootにする。
-  root 'projects#index'
 
   post '/projects/:project_id/tasks/:id/toggle' => 'tasks#toggle'
 end
