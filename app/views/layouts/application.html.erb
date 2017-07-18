@@ -10,19 +10,7 @@
 
   <body>
     <%= image_tag "rails.png" %>
-<!-- viewファイルに記述したものは、以下の <%#= yield %> にて適用される -->
     <%= yield %>
     <%= link_to "ホームへ戻る", projects_path %> <!-- 脚注１ -->
   </body>
 </html>
-
-
-<!-- 脚注１
-
-projects_path：
-Prefix             ：projects
-Verb               ：GET
-URI Pattern        ：/projects(.:format)
-Controller#Action  ：projects#index
-
--->

@@ -1,4 +1,3 @@
-<!-- ユーザーが任意で作成したプロジェクト名（@project.title）がそのまま表示される -->
 <h1><%= @project.title %></h1>
 
 <ul>
@@ -9,7 +8,6 @@
       <%= link_to "[削除する]", project_task_path(task.project.id, task.id), 
                                   method: :delete, data: { confirm: "本当に削除しますか？" } %>
       <% if task.image? %>
-        <!-- 画像あるなら、画像表示。サイズは50x50 -->
 　　    <%= image_tag task.image.thumb.url, size: "50x50" %>
 　    <% else %>
 　　    <%= "" %>

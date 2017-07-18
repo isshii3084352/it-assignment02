@@ -1,6 +1,5 @@
 <h1>Projects（トップページ）</h1>
 <ul>
-<!-- @projectsは、/app/controller/projects_controller.rb にて宣言されている -->
   <% @projects.each do |project| %>
   <li>
     <%= link_to "プロジェクト「#{project.title}」", project_path(project.id) %>
@@ -10,38 +9,7 @@
     </li>
   <% end %>
 </ul>
-<!--
-1番目のlink_to
-Prefix             ：project
-Verb               ：GET
-URI Pattern        ：/projects/:id(.:format)  ★左の通り、idが必要！
-Controller#Action  ：projects#show
-
-2番目のlink_to
-Prefix            : pdit_project
-Verb              : GET
-URI Pattern       : /projects/:id/edit(.:format)
-Controller#Action : projects#edit
-
-3番目のlink_to
-Prefix             ：project
-Verb               ：DELETE
-URI Pattern        ：/projects/:id(.:format)
-Controller#Action  ：projects#destroy
--->
-
-
-
 
 <p>
-<%= link_to "新規プロジェクトを作成する", new_project_path %>
+  <%= link_to "新規プロジェクトを作成する", new_project_path %>
 </p>
-<!-- validationで、空白NG、最小3文字とか設定する：/app/models/project.rb -->
-
-<!--
-new_project_path：
-Prefix             ：new_project
-Verb               ：GET
-URI Pattern        ：/projects/new(.:format)
-Controller#Action  ：projects#new
--->

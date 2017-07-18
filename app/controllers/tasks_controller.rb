@@ -9,11 +9,6 @@ class TasksController < ApplicationController
 #      render template: "projects/show"
 #    end
   end
-# Prefix            : project_tasks
-# Verb              : POST
-# URI Pattern       : /projects/:project_id/tasks(.:format)
-# Controller#Action : tasks#create
-
 
   def destroy
     @task = Task.find(params[:id])
