@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'carrierwave'
+gem 'rmagick'
+
 gem 'rails',        '5.0.3'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
